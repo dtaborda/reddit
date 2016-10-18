@@ -1,0 +1,23 @@
+$headerBackgroundColor: #00b7ff;
+$bodyBackgroundColor: #f5f7fa;
+
+.content {
+  margin: 0;
+  padding: 0;
+  background-color: $bodyBackgroundColor;
+}
+
+.headerContainer {
+  background-color: $headerBackgroundColor;
+}
+
+.header {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.body {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 8px;
+}

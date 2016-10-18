@@ -1,0 +1,89 @@
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _reactRouter = require('react-router');
+
+var _reactRedux = require('react-redux');
+
+var _routes = require('routes');
+
+var _routes2 = _interopRequireDefault(_routes);
+
+var _store = require('store');
+
+var _store2 = _interopRequireDefault(_store);
+
+var _api_facade = require('./api/api_facade');
+
+var _api_facade2 = _interopRequireDefault(_api_facade);
+
+require('assets/stylesheets/index.scss');
+
+require('assets/static_content');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// Apply the base styles for ALL the app
+
+
+// Make sure the static_content gets added to the bundle
+
+
+// API Facade to access services
+var apiClient = new _api_facade2.default(null);
+var store = (0, _store2.default)({}, apiClient);
+
+var Root = function (_Component) {
+  _inherits(Root, _Component);
+
+  function Root() {
+    _classCallCheck(this, Root);
+
+    return _possibleConstructorReturn(this, (Root.__proto__ || Object.getPrototypeOf(Root)).apply(this, arguments));
+  }
+
+  _createClass(Root, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _reactRedux.Provider,
+        { store: store },
+        (0, _routes2.default)(store, _reactRouter.browserHistory, window.__router)
+      );
+    }
+  }]);
+
+  return Root;
+}(_react.Component);
+
+_reactDom2.default.render(_react2.default.createElement(Root, null), document.getElementById('application'));
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(apiClient, 'apiClient', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/index.jsx');
+
+  __REACT_HOT_LOADER__.register(store, 'store', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/index.jsx');
+
+  __REACT_HOT_LOADER__.register(Root, 'Root', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/index.jsx');
+}();
+
+;

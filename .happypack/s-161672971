@@ -1,0 +1,78 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _web_layout = require('views/shared/layout/web_layout/');
+
+var _web_layout2 = _interopRequireDefault(_web_layout);
+
+var _damian = require('./damian.scss');
+
+var _damian2 = _interopRequireDefault(_damian);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Damian = function (_Component) {
+  _inherits(Damian, _Component);
+
+  function Damian() {
+    _classCallCheck(this, Damian);
+
+    return _possibleConstructorReturn(this, (Damian.__proto__ || Object.getPrototypeOf(Damian)).apply(this, arguments));
+  }
+
+  _createClass(Damian, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _web_layout2.default,
+        {
+          showSearch: false,
+          onGoToProfile: this.props.onGoToProfile
+        },
+        _react2.default.createElement(
+          'h1',
+          { className: _damian2.default.title },
+          'Damian'
+        )
+      );
+    }
+  }], [{
+    key: 'propTypes',
+    get: function get() {
+      return {
+        onGoToProfile: _react.PropTypes.func
+      };
+    }
+  }]);
+
+  return Damian;
+}(_react.Component);
+
+exports.default = Damian;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Damian, 'Damian', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/views/damian/damian/damian.jsx');
+}();
+
+;

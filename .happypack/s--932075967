@@ -1,0 +1,173 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _dec, _class;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDnd = require('react-dnd');
+
+var _reactDndHtml5Backend = require('react-dnd-html5-backend');
+
+var _reactDndHtml5Backend2 = _interopRequireDefault(_reactDndHtml5Backend);
+
+var _news_info_drag_ui = require('./news_info_drag_ui');
+
+var _news_info_drag_ui2 = _interopRequireDefault(_news_info_drag_ui);
+
+var _reddit_drop_ui = require('./reddit_drop_ui');
+
+var _reddit_drop_ui2 = _interopRequireDefault(_reddit_drop_ui);
+
+var _redditLogo = require('assets/images/reddit-logo.png');
+
+var _redditLogo2 = _interopRequireDefault(_redditLogo);
+
+var _mailLogo = require('assets/images/mail-logo.png');
+
+var _mailLogo2 = _interopRequireDefault(_mailLogo);
+
+var _news_card_drag_and_drop = require('./news_card_drag_and_drop.scss');
+
+var _news_card_drag_and_drop2 = _interopRequireDefault(_news_card_drag_and_drop);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function addClassName(el, className) {
+  var classes = el.className.split(' ');
+  if (classes.indexOf(className) === -1) {
+    el.className = classes.concat(className).join('');
+  }
+}
+
+function removeClassName(el, className) {
+  var classes = el.className.split(' ');
+  el.className = classes.filter(function (c) {
+    return c !== className;
+  }).join('');
+}
+
+var NewsCardDragAndDrop = (_dec = (0, _reactDnd.DragDropContext)(_reactDndHtml5Backend2.default), _dec(_class = function (_Component) {
+  _inherits(NewsCardDragAndDrop, _Component);
+
+  function NewsCardDragAndDrop() {
+    _classCallCheck(this, NewsCardDragAndDrop);
+
+    return _possibleConstructorReturn(this, (NewsCardDragAndDrop.__proto__ || Object.getPrototypeOf(NewsCardDragAndDrop)).apply(this, arguments));
+  }
+
+  _createClass(NewsCardDragAndDrop, [{
+    key: 'handleClose',
+    value: function handleClose() {
+      removeClassName(document.body, _news_card_drag_and_drop2.default.bodyWithOpenModal);
+      this.props.onClose();
+    }
+  }, {
+    key: 'handleRedditRedirect',
+    value: function handleRedditRedirect() {
+      var redditPost = 'https://www.reddit.com' + this.props.permalink;
+      return redditPost;
+    }
+  }, {
+    key: 'handleEmailRedirect',
+    value: function handleEmailRedirect() {
+      var redditPost = 'https://www.reddit.com' + this.props.permalink;
+      var email = 'mailto:dummy@test.com?subject=Checkout this Reddit post&body=' + redditPost;
+      return email;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var props = this.props;
+
+
+      if (this.props.title) {
+        addClassName(document.body, _news_card_drag_and_drop2.default.bodyWithOpenModal);
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: _news_card_drag_and_drop2.default.content, onClick: this.handleClose.bind(this) },
+        _react2.default.createElement(_news_info_drag_ui2.default, {
+          title: props.title,
+          author: props.author,
+          thumbnail: props.thumbnail,
+          numComments: props.numComments,
+          ups: props.ups,
+          downs: props.downs,
+          permalink: props.permalink
+        }),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'p',
+            null,
+            'Drag the card on the left to the desired action'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _news_card_drag_and_drop2.default.icons },
+          _react2.default.createElement(_reddit_drop_ui2.default, {
+            logo: _redditLogo2.default,
+            onRedirect: this.handleRedditRedirect.bind(this),
+            title: 'Opend on Reddit'
+          }),
+          _react2.default.createElement(_reddit_drop_ui2.default, {
+            logo: _mailLogo2.default,
+            onRedirect: this.handleEmailRedirect.bind(this),
+            title: 'Email to a friend'
+          })
+        )
+      );
+    }
+  }], [{
+    key: 'propTypes',
+    get: function get() {
+      return {
+        title: _react.PropTypes.string.isRequired,
+        author: _react.PropTypes.string.isRequired,
+        thumbnail: _react.PropTypes.string.isRequired,
+        numComments: _react.PropTypes.number.isRequired,
+        ups: _react.PropTypes.number.isRequired,
+        downs: _react.PropTypes.number.isRequired,
+        permalink: _react.PropTypes.string.isRequired,
+        showModal: _react.PropTypes.bool,
+        onClose: _react.PropTypes.func
+      };
+    }
+  }]);
+
+  return NewsCardDragAndDrop;
+}(_react.Component)) || _class);
+exports.default = NewsCardDragAndDrop;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(addClassName, 'addClassName', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/views/reddit/search_container/search/news_card_drag_and_drop/news_card_drag_and_drop.jsx');
+
+  __REACT_HOT_LOADER__.register(removeClassName, 'removeClassName', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/views/reddit/search_container/search/news_card_drag_and_drop/news_card_drag_and_drop.jsx');
+
+  __REACT_HOT_LOADER__.register(NewsCardDragAndDrop, 'NewsCardDragAndDrop', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/views/reddit/search_container/search/news_card_drag_and_drop/news_card_drag_and_drop.jsx');
+}();
+
+;

@@ -1,0 +1,148 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _web_layout = require('views/shared/layout/web_layout/');
+
+var _web_layout2 = _interopRequireDefault(_web_layout);
+
+var _news_card_ui = require('./news_card_ui');
+
+var _news_card_ui2 = _interopRequireDefault(_news_card_ui);
+
+var _news_card_drag_and_drop = require('./news_card_drag_and_drop');
+
+var _news_card_drag_and_drop2 = _interopRequireDefault(_news_card_drag_and_drop);
+
+var _search = require('./search.scss');
+
+var _search2 = _interopRequireDefault(_search);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Search = function (_Component) {
+  _inherits(Search, _Component);
+
+  function Search() {
+    _classCallCheck(this, Search);
+
+    return _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).apply(this, arguments));
+  }
+
+  _createClass(Search, [{
+    key: 'handrleSetNewCurrent',
+    value: function handrleSetNewCurrent(newCurrent) {
+      this.props.onSetNewCurrent({
+        title: newCurrent.title,
+        author: newCurrent.author,
+        thumbnail: newCurrent.thumbnail,
+        numComments: newCurrent.num_comments,
+        ups: newCurrent.ups,
+        downs: newCurrent.downs,
+        permalink: newCurrent.permalink
+      });
+    }
+  }, {
+    key: 'renderRedditContent',
+    value: function renderRedditContent() {
+      var _this2 = this;
+
+      if (this.props.redditNews && this.props.redditNews.data) {
+        return this.props.redditNews.data.children.map(function (item, index) {
+          var data = item.data;
+
+          return _react2.default.createElement(
+            'div',
+            { key: index, onClick: _this2.handrleSetNewCurrent.bind(_this2, data) },
+            _react2.default.createElement(_news_card_ui2.default, {
+              title: data.title,
+              author: data.author,
+              thumbnail: data.thumbnail,
+              numComments: data.num_comments,
+              ups: data.ups,
+              downs: data.downs,
+              permalink: data.permalink
+            })
+          );
+        });
+      }
+    }
+  }, {
+    key: 'renderShowCurrent',
+    value: function renderShowCurrent() {
+      if (this.props.current) {
+        var current = this.props.current;
+
+        return _react2.default.createElement(_news_card_drag_and_drop2.default, {
+          title: current.title,
+          author: current.author,
+          thumbnail: current.thumbnail,
+          numComments: current.numComments,
+          ups: current.ups,
+          downs: current.downs,
+          permalink: current.permalink,
+          onClose: this.props.onDeleteCurrent
+        });
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _web_layout2.default,
+        {
+          onGoToProfile: this.props.onGoToProfile,
+          onSearchAction: this.props.onGetRedditNews
+        },
+        _react2.default.createElement(
+          'div',
+          null,
+          this.renderRedditContent(),
+          this.renderShowCurrent()
+        )
+      );
+    }
+  }], [{
+    key: 'propTypes',
+    get: function get() {
+      return {
+        onGoToProfile: _react.PropTypes.func,
+        redditNews: _react.PropTypes.object,
+        onGetRedditNews: _react.PropTypes.func.isRequired,
+        onSetNewCurrent: _react.PropTypes.func.isRequired,
+        onDeleteCurrent: _react.PropTypes.func.isRequired,
+        current: _react.PropTypes.object
+      };
+    }
+  }]);
+
+  return Search;
+}(_react.Component);
+
+exports.default = Search;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Search, 'Search', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/views/reddit/search_container/search/search.jsx');
+}();
+
+;

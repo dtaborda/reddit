@@ -1,0 +1,123 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _dec, _class;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouter = require('react-router');
+
+var _reactRedux = require('react-redux');
+
+var _search = require('./search');
+
+var _search2 = _interopRequireDefault(_search);
+
+var _reddit_action_creator = require('action_creators/reddit_action_creator');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var select = function select(state) {
+  return {
+    gettingRedditSchema: state.reddit.gettingRedditSchema,
+    redditSchemaError: state.reddit.redditSchemaError,
+    redditSchema: state.reddit.redditSchema
+  };
+};
+
+var RedditSearchContainer = (_dec = (0, _reactRedux.connect)(select), _dec(_class = function (_Component) {
+  _inherits(RedditSearchContainer, _Component);
+
+  _createClass(RedditSearchContainer, null, [{
+    key: 'propTypes',
+    get: function get() {
+      return {
+        dispatch: _react.PropTypes.func.isRequired,
+        redditSchema: _search2.default.propTypes.redditNews,
+        gettingRedditSchema: _react.PropTypes.bool
+      };
+    }
+  }]);
+
+  function RedditSearchContainer(props) {
+    _classCallCheck(this, RedditSearchContainer);
+
+    var _this = _possibleConstructorReturn(this, (RedditSearchContainer.__proto__ || Object.getPrototypeOf(RedditSearchContainer)).call(this, props));
+
+    _this.state = {
+      current: null
+    };
+    return _this;
+  }
+
+  _createClass(RedditSearchContainer, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.handleGetRedditSchema('funny');
+    }
+  }, {
+    key: 'handrleSetNewCurrent',
+    value: function handrleSetNewCurrent(newCurrent) {
+      this.setState({ current: newCurrent });
+    }
+  }, {
+    key: 'handrleDeleteCurrent',
+    value: function handrleDeleteCurrent() {
+      this.setState({ current: null });
+    }
+  }, {
+    key: 'handleGetRedditSchema',
+    value: function handleGetRedditSchema(nameSchema) {
+      var dispatch = this.props.dispatch;
+
+      dispatch((0, _reddit_action_creator.getRedditSchema)(nameSchema));
+    }
+  }, {
+    key: 'handleGoToProfile',
+    value: function handleGoToProfile() {
+      _reactRouter.browserHistory.push('/damian');
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(_search2.default, {
+        redditNews: this.props.redditSchema.asMutable({ deep: true }),
+        onGoToProfile: this.handleGoToProfile.bind(this),
+        onGetRedditNews: this.handleGetRedditSchema.bind(this),
+        onSetNewCurrent: this.handrleSetNewCurrent.bind(this),
+        onDeleteCurrent: this.handrleDeleteCurrent.bind(this),
+        current: this.state.current
+      });
+    }
+  }]);
+
+  return RedditSearchContainer;
+}(_react.Component)) || _class);
+exports.default = RedditSearchContainer;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(select, 'select', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/views/reddit/search_container/search_container.jsx');
+
+  __REACT_HOT_LOADER__.register(RedditSearchContainer, 'RedditSearchContainer', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/views/reddit/search_container/search_container.jsx');
+}();
+
+;

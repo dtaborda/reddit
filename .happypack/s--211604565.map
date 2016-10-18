@@ -1,0 +1,1 @@
+{"version":3,"sources":["app/views/reddit/search_container/search/news_card_drag_and_drop/item_types.js"],"names":["BOX"],"mappings":";;;;;eAAe;AACbA,OAAK;AADQ,C","file":"item_types.js","sourceRoot":"/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge","sourcesContent":["export default {\n  BOX: 'box'\n};\n"]}

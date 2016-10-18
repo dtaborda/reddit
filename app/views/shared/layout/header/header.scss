@@ -1,0 +1,28 @@
+$headerBackgroundColor: #00b7ff;
+$headerBrandColor: #FFF;
+
+.content {
+  background-color: $headerBackgroundColor;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.brand {
+  color: $headerBrandColor;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search {
+  border-radius: 10px;
+  border: 1px solid #FFF;
+}

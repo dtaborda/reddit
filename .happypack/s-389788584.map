@@ -1,0 +1,1 @@
+{"version":3,"sources":["app/views/shared/layout/header/index.js"],"names":["default"],"mappings":";;;;;;;;;;;;;QAAOA,O","file":"index.js","sourceRoot":"/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge","sourcesContent":["export default from './header';\n"]}

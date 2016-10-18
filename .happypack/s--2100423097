@@ -1,0 +1,62 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = redditReducer;
+
+var _reddit = require('action_types/reddit');
+
+var _reddit2 = _interopRequireDefault(_reddit);
+
+var _matches_action = require('./utils/matches_action');
+
+var _matches_action2 = _interopRequireDefault(_matches_action);
+
+var _immutable_helpers = require('./utils/immutable_helpers');
+
+var ih = _interopRequireWildcard(_immutable_helpers);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initialState = ih.immutable({
+  gettingRedditSchema: false,
+  redditSchemaError: null,
+  redditSchema: {}
+});
+
+function redditReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  if ((0, _matches_action2.default)(action, _reddit2.default.GET_REDDIT_SCHEMA.request)) {
+    state = ih.set(state, 'gettingRedditSchema', true);
+  }
+
+  if ((0, _matches_action2.default)(action, _reddit2.default.GET_REDDIT_SCHEMA.done)) {
+    state = ih.set(state, 'gettingRedditSchema', false);
+    state = ih.set(state, 'redditSchema', action.apiResponse);
+  }
+
+  if ((0, _matches_action2.default)(action, _reddit2.default.GET_REDDIT_SCHEMA.fail)) {
+    state = ih.set(state, 'redditSchemaError', action.apiError);
+    state = ih.set(state, 'gettingRedditSchema', false);
+  }
+
+  return state;
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(initialState, 'initialState', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/reducers/reddit_reducer.js');
+
+  __REACT_HOT_LOADER__.register(redditReducer, 'redditReducer', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/reducers/reddit_reducer.js');
+}();
+
+;

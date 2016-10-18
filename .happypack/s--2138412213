@@ -1,0 +1,44 @@
+'use strict';
+
+// Use singletons since this is only analyzed when the bundle is loaded, so
+// no harm, which also allow us to export a literal instead of needing a func.
+var isTesting = void 0,
+    isDev = void 0,
+    isProd = void 0;
+
+getEnvValues();
+updateSingletonEnvValues();
+
+function getEnvValues() {
+  isTesting = process && process.env.NODE_ENV === 'testing';
+  isDev = process && process.env.NODE_ENV === 'development';
+  isProd = process && process.env.NODE_ENV === 'production';
+}
+
+function updateSingletonEnvValues() {
+  module.exports.isTest = isTesting;
+  module.exports.isTesting = isTesting;
+  module.exports.isDev = isDev;
+  module.exports.isDevelopment = isDev;
+  module.exports.isProd = isProd;
+  module.exports.isProduction = isProd;
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(isTesting, 'isTesting', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/utils/env.js');
+
+  __REACT_HOT_LOADER__.register(isDev, 'isDev', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/utils/env.js');
+
+  __REACT_HOT_LOADER__.register(isProd, 'isProd', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/utils/env.js');
+
+  __REACT_HOT_LOADER__.register(getEnvValues, 'getEnvValues', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/utils/env.js');
+
+  __REACT_HOT_LOADER__.register(updateSingletonEnvValues, 'updateSingletonEnvValues', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/utils/env.js');
+}();
+
+;

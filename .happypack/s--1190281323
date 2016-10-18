@@ -1,0 +1,32 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getRedditSchema = getRedditSchema;
+
+var _reddit = require('action_types/reddit');
+
+var _reddit2 = _interopRequireDefault(_reddit);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getRedditSchema(name) {
+  return {
+    type: _reddit2.default.GET_REDDIT_SCHEMA,
+    callAPI: function callAPI(api) {
+      return api.reddit.getRedditSchema(name);
+    }
+  };
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(getRedditSchema, 'getRedditSchema', '/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge/app/action_creators/reddit_action_creator.js');
+}();
+
+;
