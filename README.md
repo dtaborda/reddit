@@ -1,7 +1,8 @@
 # React scaffolding
 
 An opinionated scaffolding with the following technical stack and configuration:
-
+* nodejs v4.2.x
+* npm v3.8.x
 * React  (15.x)
 * React Router (2.x)
 * Flux by using Redux (3.x)
@@ -23,7 +24,6 @@ The idea is to provide a base structure that enable consumers to start building 
 ## Getting started
 
 To start hacking simply do:
-
 ```
 $ npm install
 $ npm start
