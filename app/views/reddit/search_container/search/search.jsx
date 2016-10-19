@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import WebLayout from 'views/shared/layout/web_layout/';
+import Loading from 'views/shared/loading/';
 import NewsCardUI from './news_card_ui';
 import NewsCarDragAndDrop from './news_card_drag_and_drop';
 
@@ -11,10 +12,12 @@ export default class Search extends Component {
     return {
       onGoToProfile: PropTypes.func,
       redditNews: PropTypes.object,
+      gettingRedditNews: PropTypes.bool,
       onGetRedditNews: PropTypes.func.isRequired,
       onSetNewCurrent: PropTypes.func.isRequired,
       onDeleteCurrent: PropTypes.func.isRequired,
-      current: PropTypes.object
+      current: PropTypes.object,
+      showMessage: PropTypes.string
     };
   }
 
@@ -33,9 +36,14 @@ export default class Search extends Component {
     );
   }
 
+  renderLoading() {
+    if (this.props.gettingRedditNews) {
+      return <Loading />;
+    }
+  }
   renderRedditContent() {
     if (this.props.redditNews && this.props.redditNews.data) {
-      return this.props.redditNews.data.children.map((item, index) => {
+      const redditNewsColection = this.props.redditNews.data.children.map((item, index) => {
         const { data } = item;
         return (
           <div key={index} onClick={this.handrleSetNewCurrent.bind(this, data)}>
@@ -51,7 +59,19 @@ export default class Search extends Component {
           </div>
         );
       });
+      return redditNewsColection;
     }
+  }
+
+  renderMessage() {
+    if (this.props.showMessage) {
+      return (
+        <div className={styles.messageContent}>
+          <p>{this.props.showMessage}</p>
+        </div>
+      );
+    }
+    return null;
   }
 
   renderShowCurrent() {
@@ -78,8 +98,9 @@ export default class Search extends Component {
         onGoToProfile={this.props.onGoToProfile}
         onSearchAction={this.props.onGetRedditNews}
       >
-        <div>
-          {this.renderRedditContent()}
+        <div className={styles.content}>
+          {this.renderLoading()}
+          {this.renderMessage() ? this.renderMessage() : this.renderRedditContent()}
           {this.renderShowCurrent()}
         </div>
       </WebLayout>

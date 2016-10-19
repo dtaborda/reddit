@@ -1,1 +1,0 @@
-{"version":3,"sources":["app/views/reddit/search_container/search/news_card_drag_and_drop/email_ui/index.js"],"names":["default"],"mappings":";;;;;;;;;;;;;QAAOA,O","file":"index.js","sourceRoot":"/Users/damian.taborda/ws/whiteprompt/reddit/DamianTaborda_WebCodeChallenge","sourcesContent":["export default from './email_ui';\n"]}

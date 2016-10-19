@@ -18,13 +18,6 @@ export default class IndexTemplate extends Component {
       <Helmet title={this.props.title} />
       <script dangerouslySetInnerHTML={{ __html: `window.__router='${this.props.router}';` }} charSet='UTF-8'/>
       {
-        this.props.assets.styleLinks.map((styleUrl, index) => {
-          return (
-            <link key={index} rel='stylesheet' href={styleUrl} charSet='UTF-8' />
-          );
-        })
-      }
-      {
         this.props.assets.scripts.map((scriptUrl, index) => {
           return (
             <script key={index} type='text/javascript' src={scriptUrl} charSet='UTF-8' />
@@ -36,7 +29,11 @@ export default class IndexTemplate extends Component {
 
   render() {
     return (
-      <MainLayout title={this.props.title} content={this.renderContent()} />
+      <MainLayout
+        title={this.props.title}
+        styleLinks={this.props.assets.styleLinks}
+        content={this.renderContent()}
+      />
     );
   }
 }

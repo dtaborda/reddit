@@ -17,6 +17,11 @@ export default function redditReducer(state = initialState, action) {
   if (matchesAction(action, Types.GET_REDDIT_SCHEMA.done)) {
     state = ih.set(state, 'gettingRedditSchema', false);
     state = ih.set(state, 'redditSchema', action.apiResponse);
+    if (action.apiResponse.data.children.length > 0) {
+      state = ih.set(state, 'redditSchemaError', null);
+    } else {
+      state = ih.set(state, 'redditSchemaError', 'Error - no result found');
+    }
   }
 
   if (matchesAction(action, Types.GET_REDDIT_SCHEMA.fail)) {

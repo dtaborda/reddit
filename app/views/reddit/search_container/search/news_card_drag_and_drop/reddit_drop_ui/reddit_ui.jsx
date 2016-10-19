@@ -34,15 +34,15 @@ export default class ReeditUI extends Component {
 
     let border = '1px solid white';
     if (isActive) {
-      border = '1px solid blue';
+      border = '2px solid #00b7ff';
     } else if (canDrop) {
       border = '1px solid white';
     }
 
     return connectDropTarget(
       <div style={{ border }} className={styles.content}>
-        <img src={this.props.logo} />
-        <h4>{this.props.title}</h4>
+        <img className={styles.icon} src={this.props.logo} />
+        <h4 className={styles.label}>{this.props.title}</h4>
       </div>
     );
   }

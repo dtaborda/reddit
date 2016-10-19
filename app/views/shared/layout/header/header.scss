@@ -23,6 +23,14 @@ $headerBrandColor: #FFF;
 }
 
 .search {
+  color: #00b7ff;
   border-radius: 10px;
   border: 1px solid #FFF;
+  width: 130px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+.search:focus {
+  width: 260px
 }

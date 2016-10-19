@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import classNames from 'classnames';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import NewsInfoDragUI from './news_info_drag_ui';
@@ -62,29 +63,33 @@ export default class NewsCardDragAndDrop extends Component {
 
     return (
       <div className={styles.content} onClick={this.handleClose.bind(this)}>
-        <NewsInfoDragUI
-          title={props.title}
-          author={props.author}
-          thumbnail={props.thumbnail}
-          numComments={props.numComments}
-          ups={props.ups}
-          downs={props.downs}
-          permalink={props.permalink}
-        />
-        <div>
-          <p>Drag the card on the left to the desired action</p>
-        </div>
-        <div className={styles.icons}>
-          <ReeditDropUI
-            logo={redditLogo}
-            onRedirect={this.handleRedditRedirect.bind(this)}
-            title="Opend on Reddit"
-          />
-          <ReeditDropUI
-            logo={mailLogo}
-            onRedirect={this.handleEmailRedirect.bind(this)}
-            title="Email to a friend"
-          />
+        <div className={styles.newsContent}>
+          <div className={styles.newsItem}>
+            <NewsInfoDragUI
+              title={props.title}
+              author={props.author}
+              thumbnail={props.thumbnail}
+              numComments={props.numComments}
+              ups={props.ups}
+              downs={props.downs}
+              permalink={props.permalink}
+            />
+          </div>
+          <div className={styles.textItem}>
+            <p>Drag the card on the left to the desired action</p>
+          </div>
+          <div className={classNames(styles.newsItem, styles.icons)}>
+            <ReeditDropUI
+              logo={redditLogo}
+              onRedirect={this.handleRedditRedirect.bind(this)}
+              title="Opend on Reddit"
+            />
+            <ReeditDropUI
+              logo={mailLogo}
+              onRedirect={this.handleEmailRedirect.bind(this)}
+              title="Email to a friend"
+            />
+          </div>
         </div>
       </div>
     );

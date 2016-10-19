@@ -7,7 +7,8 @@ export default class MainLayout extends Component {
   static get propTypes() {
     return {
       title: PropTypes.string,
-      content: PropTypes.node
+      content: PropTypes.node,
+      styleLinks: PropTypes.array
     };
   }
 
@@ -24,7 +25,14 @@ export default class MainLayout extends Component {
           {head.script.toComponent()}
           <meta httpEquiv='x-ua-compatible' content='ie=edge' />
           <meta name='viewport' content='width=device-width, initial-scale=1' />
-          <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' rel='stylesheet' integrity='sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1' crossOrigin='anonymous' />
+          <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet" />
+          {
+            this.props.styleLinks.map((styleUrl, index) => {
+              return (
+                <link key={index} rel='stylesheet' href={styleUrl} charSet='UTF-8' />
+              );
+            })
+          }
         </head>
         <body>
           <div id='application' dangerouslySetInnerHTML={{ __html: content }}/>

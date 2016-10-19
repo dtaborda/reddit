@@ -1,4 +1,59 @@
 .content {
-  padding: 8px;
-  border-bottom: 1px solid gray;
+  padding: 24px 8px;
+  border-bottom: 1px solid #DCDCDC;
+  display: flex;
+}
+
+.content:hover {
+  background-color: #FFF;
+}
+
+.infoContainer {
+  padding: 0 16px;
+}
+
+.thumbnail {
+  width: 90px;
+  height: 90px;
+  border-radius: 90%;
+  border: 2px solid #DCDCDC
+}
+
+.author {
+  color: #00b7ff;
+  margin: 0;
+}
+
+.title {
+  margin: 8px 0;
+}
+
+.iconsContent {
+  display: flex;
+  width: 100%;
+}
+
+.iconContainer {
+  margin: 8px;
+}
+
+.icon {
+  background-image: url('assets/images/icon-sprite.png');
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  vertical-align: middle;
+}
+
+.upsIcons {
+  background-position: 0px -16px;
+}
+.downsIcons {
+  background-position: 0px -32px;
+}
+
+.value {
+  margin-left: 8px;
+  font-size: 10px;
 }

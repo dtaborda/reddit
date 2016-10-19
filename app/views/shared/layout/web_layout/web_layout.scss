@@ -2,9 +2,16 @@ $headerBackgroundColor: #00b7ff;
 $bodyBackgroundColor: #f5f7fa;
 
 .content {
+  height: 100vh;
   margin: 0;
   padding: 0;
   background-color: $bodyBackgroundColor;
+  display: flex;
+  flex-direction: column;
+}
+
+.content > * {
+  flex: 1 1 auto;
 }
 
 .headerContainer {
@@ -17,7 +24,6 @@ $bodyBackgroundColor: #f5f7fa;
 }
 
 .body {
-  max-width: 480px;
-  margin: 0 auto;
   padding: 8px;
+  overflow-y: scroll;
 }

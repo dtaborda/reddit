@@ -57,7 +57,7 @@ module.exports = {
     new WebpackNotifierPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new ExtractTextPlugin('[name]-[hash].min.css'),
+    new ExtractTextPlugin('[name]-[hash].min.css', { allChunks: true }),
     /*
     new webpack.optimize.UglifyJsPlugin({
       compressor: {

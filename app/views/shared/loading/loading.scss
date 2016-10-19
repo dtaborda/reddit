@@ -1,0 +1,12 @@
+$bodyBackgroundColor: #f5f7fa;
+
+.content {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 52px);
+  background-color: $bodyBackgroundColor;
+  text-align: center;
+  padding: 40px;
+}

@@ -2,12 +2,12 @@
 
 An opinionated scaffolding with the following technical stack and configuration:
 
-* React  (0.14.x)
-* React Router (1.x)
+* React  (15.x)
+* React Router (2.x)
 * Flux by using Redux (3.x)
 * Webpack
 * CSS Modules
-* Stylus
+* SASS
 * Seamless Immutable
 * Hot module replacement
 * Babel
@@ -25,17 +25,16 @@ The idea is to provide a base structure that enable consumers to start building 
 To start hacking simply do:
 
 ```
-$ make install-githooks
 $ npm install
-$ make run
+$ npm start
 ```
-Point browser to http://localhost:9898
+Point browser to http://localhost:3000
 
 For more detailed reference continue reading.
 
 ## Rational behind the stack
 
-Check the resources [section](https://github.com/rafaelchiti/react_scaffolding/wiki/resources) for talks and explanations on WHY the stack I present here.
+Check the resources [section](https://github.com/dtaborda/reddit/wiki) for talks and explanations on WHY the stack I present here.
 
 ### Bundle process
 
